@@ -12,3 +12,5 @@ Once the conversion is complete, it will automatically redirect to an inline bro
 - run `rackup` in your terminal
 - go to `localhost:9292`
 - convert away!
+
+### [Visit the site and convert some PDFs!](https://glacial-mountain-53996.herokuapp.com/)
