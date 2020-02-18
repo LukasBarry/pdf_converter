@@ -5,6 +5,7 @@ require 'sinatra'
 require 'gs-ruby'
 
 set :root, File.dirname(__FILE__)
+set :server_settings, timeout: 120
 
 # PDF Converter
 class PdfConverter < Sinatra::Base
