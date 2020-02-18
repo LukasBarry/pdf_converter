@@ -35,7 +35,7 @@ class PdfConverter < Sinatra::Base
       command.option(GS::DEVICE, 'pdfwrite')
       command.option(GS::PDFA_COMPATIBILITY_POLICY, '1')
       command.option('CompatibilityLevel', '1.4')
-      command.option('PDFSETTINGS', 'ebook')
+      command.option('PDFSETTINGS', 'prepress')
       command.option(GS::OUTPUT_FILE,
                      "#{settings.root}/tmp/#{@output_file_name}")
     end
