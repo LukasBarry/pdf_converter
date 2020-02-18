@@ -1,0 +1,25 @@
+html {
+  background-color: #606060;
+}
+
+body {
+  background-color: #606060;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 50px;
+  color: #fff;
+}
+
+.explanation {
+  color: #fff;
+  text-align: center;
+}
+
+.card {
+  width: 40%;
+  margin: auto;
+  padding: 40px 15px 40px 15px;
+}
