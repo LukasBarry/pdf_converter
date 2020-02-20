@@ -4,5 +4,4 @@
 source 'https://rubygems.org'
 
 gem 'gs-ruby'
-gem 'puma'
 gem 'sinatra'
