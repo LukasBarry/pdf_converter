@@ -3,7 +3,6 @@
 # Uses https://github.com/lshepstone/gs-ruby for the Ghostscript command
 require 'sinatra'
 require 'gs-ruby'
-require 'pry'
 
 set :root, File.dirname(__FILE__)
 set :server_settings, timeout: 120
