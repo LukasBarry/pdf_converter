@@ -3,6 +3,7 @@
 # Uses https://github.com/lshepstone/gs-ruby for the Ghostscript command
 require 'sinatra'
 require 'gs-ruby'
+require 'pry'
 
 set :root, File.dirname(__FILE__)
 set :server_settings, timeout: 120
@@ -27,7 +28,7 @@ class PdfConverter < Sinatra::Base
       file.close
     end
 
-    GS.run("#{settings.root}/tmp/#{@filename}") do |command|
+    @pdf = GS.run("#{settings.root}/tmp/#{@filename}") do |command|
       command.option(GS::PDFA)
       command.option(GS::BATCH)
       command.option(GS::NO_PAUSE)
@@ -40,6 +41,13 @@ class PdfConverter < Sinatra::Base
                      "#{settings.root}/tmp/#{@output_file_name}")
     end
 
-    send_file "#{settings.root}/tmp/#{@output_file_name}"
+    stream do |out|
+      until @pdf.success?
+        out << '\0'
+        sleep 1
+      end
+    end
+
+    erb :process_pdf
   end
 end
