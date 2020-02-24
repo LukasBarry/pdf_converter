@@ -47,7 +47,7 @@ class PdfConverter < Sinatra::Base
 
     Kernel.system 'gs -dPDFA -dBATCH -dNOPAUSE -sProcessColorModel=DeviceCMYK'\
                   ' -sDEVICE=pdfwrite -sPDFACompatibilityPolicy=1'\
-                  ' -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook'\
+                  ' -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress'\
                   " -sOutputFile=#{settings.root}/tmp/#{@output_file_name}"\
                   " #{settings.root}/tmp/#{@filename}"
 
