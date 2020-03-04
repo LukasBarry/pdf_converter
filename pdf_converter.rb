@@ -27,27 +27,10 @@ class PdfConverter < Sinatra::Base
       file.close
     end
 
-    # @pdf = GS.run("#{settings.root}/tmp/#{@filename}") do |command|
-    #   command.option(GS::PDFA)
-    #   command.option(GS::BATCH)
-    #   command.option(GS::NO_PAUSE)
-    #   command.option(GS::PROCESS_COLOR_MODEL, 'DeviceCMYK')
-    #   command.option(GS::DEVICE, 'pdfwrite')
-    #   command.option(GS::PDFA_COMPATIBILITY_POLICY, '1')
-    #   command.option('CompatibilityLevel', '1.4')
-    #   command.option('PDFSETTINGS', 'prepress')
-    #   command.option(GS::OUTPUT_FILE,
-    #                  "#{settings.root}/tmp/#{@output_file_name}")
-    # end
-
-    # until @pdf.success?
-    #   puts 'loading...'
-    #   sleep 1
-    # end
-
-    Kernel.system 'gs -dPDFA -dBATCH -dNOPAUSE -sProcessColorModel=DeviceCMYK'\
-                  ' -sDEVICE=pdfwrite -sPDFACompatibilityPolicy=1'\
-                  ' -dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress'\
+    Kernel.system 'gs -dBATCH -dNOPAUSE -sDEVICE=pdfwrite'\
+                  ' -sColorConversionStrategy=CMYK'\
+                  ' -sProcessColorModel=DeviceCMYK'\
+                  ' -dColorImageResolution=300 -dDownsampleColorImages=true'\
                   " -sOutputFile=#{settings.root}/tmp/#{@output_file_name}"\
                   " #{settings.root}/tmp/#{@filename}"
 
