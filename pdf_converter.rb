@@ -34,6 +34,6 @@ class PdfConverter < Sinatra::Base
                   " -sOutputFile=#{settings.root}/tmp/#{@output_file_name}"\
                   " #{settings.root}/tmp/#{@filename}"
 
-    erb :process_pdf
+    send_file "#{settings.root}/tmp/#{@output_file_name}"
   end
 end
